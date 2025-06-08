@@ -2,102 +2,108 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="outerContainer">
+      {/* Head component for title and meta tags is removed for this environment */}
+      {/* In a full Next.js project, you would uncomment the following: */}
+      {/*
+      <Head>
+        <title>Minimalist Dashboard</title>
+        <meta name="description" content="A minimalist dashboard built with Next.js" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Sidebar component */}
+      <aside className="sidebar">
+        <h2 className="sidebarTitle">App Name</h2>
+        <nav className="sidebarNav">
+          <a href="#" className="sidebarNavItem">Dashboard</a>
+          <a href="#" className="sidebarNavItem">Goals</a>
+          <a href="#" className="sidebarNavItem">Feed</a>
+          <a href="#" className="sidebarNavItem">Reports</a>
+          <a href="#" className="sidebarNavItem">Settings</a>
+        </nav>
+      </aside>
+
+      {/* Main content area wrapped to accommodate the sidebar */}
+      <div className="mainContentContainer">
+        {/* New wrapper to hold the dashboard content and profile section side-by-side */}
+        <div className="dashboardAndProfileWrapper">
+          <div className="dashboardMainArea">
+            <header className="header">
+              {/* Dashboard title remains in the header */}
+              <h1 className="title">Dashboard Overview</h1>
+              {/* Navigation is now in the sidebar, so it's removed from here */}
+            </header>
+
+            <main className="main">
+              {/* Section for key performance indicator (KPI) cards */}
+              <section className="cardRow">
+                {/* Individual KPI card for Total Users */}
+                <div className="card">
+                  <h2 className="cardTitle">My Goals</h2>
+                </div>
+                {/* Individual KPI card for Revenue */}
+                <div className="card">
+                  <h2 className="cardTitle">Goals Completed</h2>
+                  <p className="cardValue">12,345</p>
+                </div>
+              </section>
+
+              {/* Section for a chart or visual representation of data */}
+              <section className="chartSection">
+                <h2 className="sectionTitle">Activity Trend</h2>
+                {/* Placeholder for where a charting library (e.g., Recharts, Chart.js) would be integrated */}
+                <div className="placeholderChart">
+                  <p>Chart goes here</p>
+                </div>
+              </section>
+
+              {/* Section for displaying recent activities or logs */}
+              <section className="recentActivity">
+                <h2 className="sectionTitle">Recent Activity</h2>
+                <ul className="activityList">
+                  {/* Example activity items */}
+                  <li className="activityItem">User 'John Doe' logged in. <span className="activityTime">2 mins ago</span></li>
+                  <li className="activityItem">User 'Mike Adams' completed goal 'Study for Finals'.<span className="activityTime">1 hour ago</span></li>
+                  <li className="activityItem">Order #1001 placed. <span className="activityTime">3 hours ago</span></li>
+                  <li className="activityItem">User 'Jane Smith' updated profile. <span className="activityTime">Yesterday</span></li>
+                </ul>
+              </section>
+            </main>
+          </div>
+
+          {/* Profile Section on the right */}
+          <aside className="profileSection">
+            <div className="profilePicture">
+              {/* Placeholder for profile image, you can replace with an actual <img> tag */}
+              <span>JD</span>
+              {/* <img src="https://placehold.co/120x120/A2D2FF/000?text=JD" alt="Profile Picture" /> */}
+            </div>
+            <h3 className="profileName">John Doe</h3>
+
+            <h4 className="friendsListTitle">Friends</h4>
+            <ul className="friendsList">
+              <li className="friendItem">
+                <div className="friendAvatar">JS</div>
+                {/* <img src="https://placehold.co/40x40/FFC7EA/000?text=JS" alt="Friend Avatar" /> */}
+                <span className="friendName">Jane Smith</span>
+              </li>
+              <li className="friendItem">
+                <div className="friendAvatar">MA</div>
+                {/* <img src="https://placehold.co/40x40/B3E0C1/000?text=MA" alt="Friend Avatar" /> */}
+                <span className="friendName">Mike Adams</span>
+              </li>
+              <li className="friendItem">
+                <div className="friendAvatar">EM</div>
+                {/* <img src="https://placehold.co/40x40/FFF8DC/000?text=EM" alt="Friend Avatar" /> */}
+                <span className="friendName">Emily White</span>
+              </li>
+            </ul>
+          </aside>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+      </div>
+
   );
 }
