@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import DashboardPage from "./dashboard/page";
+import React, { useState } from 'react';
+import ProfilePage from "./profile/page";
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState('dashboard');
+
   return (
     <div className="outerContainer">
       {/* Head component for title and meta tags is removed for this environment */}
@@ -17,9 +24,22 @@ export default function Home() {
       <aside className="sidebar">
         <h2 className="sidebarTitle">App Name</h2>
         <nav className="sidebarNav">
-          <a href="#" className="sidebarNavItem">Dashboard</a>
+                    <a
+            href="#"
+            className={`sidebarNavItem ${currentPage === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('dashboard')}
+          >
+            Dashboard
+          </a>
           <a href="#" className="sidebarNavItem">Goals</a>
           <a href="#" className="sidebarNavItem">Feed</a>
+          <a
+            href="#"
+            className={`sidebarNavItem ${currentPage === 'profile' ? 'active' : ''}`}
+            onClick={() => setCurrentPage('profile')}
+          >
+            Profile
+          </a>
           <a href="#" className="sidebarNavItem">Reports</a>
           <a href="#" className="sidebarNavItem">Settings</a>
         </nav>
@@ -29,49 +49,17 @@ export default function Home() {
       <div className="mainContentContainer">
         {/* New wrapper to hold the dashboard content and profile section side-by-side */}
         <div className="dashboardAndProfileWrapper">
-          <div className="dashboardMainArea">
-            <header className="header">
-              {/* Dashboard title remains in the header */}
-              <h1 className="title">Dashboard Overview</h1>
-              {/* Navigation is now in the sidebar, so it's removed from here */}
-            </header>
+            {currentPage === 'dashboard' && (
+            <div className="dashboardMainArea">
+              <DashboardPage />
+            </div>
+          )}
 
-            <main className="main">
-              {/* Section for key performance indicator (KPI) cards */}
-              <section className="cardRow">
-                {/* Individual KPI card for Total Users */}
-                <div className="card">
-                  <h2 className="cardTitle">My Goals</h2>
-                </div>
-                {/* Individual KPI card for Revenue */}
-                <div className="card">
-                  <h2 className="cardTitle">Goals Completed</h2>
-                  <p className="cardValue">12,345</p>
-                </div>
-              </section>
-
-              {/* Section for a chart or visual representation of data */}
-              <section className="chartSection">
-                <h2 className="sectionTitle">Activity Trend</h2>
-                {/* Placeholder for where a charting library (e.g., Recharts, Chart.js) would be integrated */}
-                <div className="placeholderChart">
-                  <p>Chart goes here</p>
-                </div>
-              </section>
-
-              {/* Section for displaying recent activities or logs */}
-              <section className="recentActivity">
-                <h2 className="sectionTitle">Recent Activity</h2>
-                <ul className="activityList">
-                  {/* Example activity items */}
-                  <li className="activityItem">User 'John Doe' logged in. <span className="activityTime">2 mins ago</span></li>
-                  <li className="activityItem">User 'Mike Adams' completed goal 'Study for Finals'.<span className="activityTime">1 hour ago</span></li>
-                  <li className="activityItem">Order #1001 placed. <span className="activityTime">3 hours ago</span></li>
-                  <li className="activityItem">User 'Jane Smith' updated profile. <span className="activityTime">Yesterday</span></li>
-                </ul>
-              </section>
-            </main>
-          </div>
+            {currentPage === 'profile' && (
+            <div className="dashboardMainArea"> {/* Reusing dashboardMainArea for layout */}
+              <ProfilePage />
+            </div>
+          )}
 
           {/* Profile Section on the right */}
           <aside className="profileSection">
