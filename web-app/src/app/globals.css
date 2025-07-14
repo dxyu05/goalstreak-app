@@ -1,362 +1,122 @@
-/* Overall layout container for sidebar and main content */
-.outerContainer {
-  display: flex; /* Use flexbox to lay out sidebar and main content side-by-side */
-  min-height: 100vh; /* Ensure it takes full viewport height */
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: #f8f8f8; /* Very light grey background */
-  color: #333;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Sidebar Styling */
-.sidebar {
-  width: 250px; /* Fixed width for the sidebar */
-  background-color: #fff; /* White background for the sidebar */
-  padding: 2rem 1.5rem; /* Padding inside the sidebar */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03); /* Subtle shadow on the right edge */
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start; /* Align nav items to the start */
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
-.sidebarTitle {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: #333;
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
-.sidebarNav {
-  display: flex;
-  flex-direction: column; /* Stack navigation items vertically */
-  width: 100%;
-  gap: 0.8rem; /* Space between nav items */
-}
-
-.sidebarNavItem {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  padding: 0.7rem 1rem; /* Padding for click/hover area */
-  border-radius: 6px; /* Slightly rounded corners for nav items */
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  display: block; /* Make the entire padding area clickable */
-}
-
-.sidebarNavItem:hover {
-  background-color: #eef; /* Light blue on hover */
-  color: #000;
-}
-.sidebarNavItem.active { /* Style for the active navigation item */
-    background-color: #e0e0e0;
-    color: #000;
-    font-weight: 600;
-}
-/* Main Content Container that holds the dashboard and profile */
-.mainContentContainer {
-  flex-grow: 1; /* Allows main content to take remaining space */
-  padding: 2rem; /* Padding around the content area */
-  overflow-y: auto; /* Enable scrolling for main content if needed */
-}
-
-/* Wrapper for the dashboard content and profile section to enable side-by-side layout */
-.dashboardAndProfileWrapper {
-  display: flex;
-  gap: 2rem; /* Space between the dashboard main area and the profile section */
-  max-width: 100%; /* Ensure it doesn't overflow */
-}
-
-/* Dashboard Main Area (takes up most space next to profile) */
-.dashboardMainArea {
-  flex-grow: 1; /* Allows dashboard content to fill available space */
-  max-width: calc(100% - 300px - 2rem); /* Max width considering profile section and gap */
-}
-
-/* Profile Section Styling */
-.profileSection {
-  width: 300px; /* Fixed width for the profile section */
-  background-color: #fff; /* White background */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0; /* Prevent profile section from shrinking */
-}
-
-.profilePicture {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%; /* Circular image */
-  background-color: #eee; /* Placeholder background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem; /* For initial/placeholder text */
-  color: #bbb;
-  margin-bottom: 1rem;
-  overflow: hidden; /* Ensure image fits */
-}
-
-.profilePicture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Cover the area without distortion */
-}
-
-.profileName {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.friendsListTitle {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #555;
-  margin-top: 1rem;
-  margin-bottom: 0.8rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.5rem;
-  width: 100%;
-  text-align: center;
-}
-
-.friendsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%; /* Ensure list takes full width of parent */
-}
-
-.friendItem {
-  display: flex;
-  align-items: center;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #f0f0f0; /* Lighter separator */
-}
-
-.friendItem:last-child {
-  border-bottom: none;
-}
-
-.friendAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ddd;
-  margin-right: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  color: #999;
-  overflow: hidden;
-}
-
-.friendAvatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.friendName {
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Basic Reset & Font for the overall container (now part of mainContentContainer's parent) */
-/* These styles are now applied to .outerContainer or within specific sections */
-.container { /* This class is now effectively replaced by mainContentContainer */
-  /* No direct styling here, it's a legacy from previous iteration */
-}
-
-
-/* Header Styling (within main content) */
-.header {
-  display: flex; /* Flexbox for horizontal alignment of title and nav */
-  justify-content: space-between; /* Pushes title to left, nav to right */
-  align-items: center; /* Vertically centers items */
-  margin-bottom: 3rem; /* Space below the header */
-  padding-bottom: 1rem; /* Padding at the bottom for the border */
-  border-bottom: 1px solid #eee; /* Subtle bottom border */
-}
-
-.title {
-  font-size: 2.5rem; /* Larger font size for the main title */
-  font-weight: 300; /* Lighter font weight for a minimalist, airy feel */
-  margin: 0; /* Remove default margins */
-}
-
-/* Removed .nav and .navItem from here as they are now in the sidebar */
-
-/* Main Content Area (referring to the internal structure of the main content container) */
-.main {
-  max-width: 1200px; /* Max width to keep content from spreading too wide on large screens */
-  margin: 0 auto; /* Center the main content */
-}
-
-/* Card Row Layout */
-.cardRow {
-  display: grid; /* Grid layout for cards */
-  /* Responsive grid: auto-fit creates as many columns as fit, minmax sets min/max width for each */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; /* Space between cards */
-  margin-bottom: 3rem; /* Space below the card row */
-}
-
-/* Individual Card Styling */
-.biggerCard {
-  background-color: #fff; /* White background for cards */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-  padding: 2rem; /* Inner padding */
-  text-align: center; /* Center align content within cards */
-  grid-column: span 2;
-}
-
-.smallerCard {
-  background-color: #fff; /* White background for cards */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-  padding: 2rem; /* Inner padding */
-  text-align: center; /* Center align content within cards */
-  grid-column: span 1;
-}
-
-
-.cardTitle {
-  font-size: 1.1rem; /* Smaller font for title */
-  color: #777; /* Lighter grey for title */
-  margin-bottom: 0.5rem; /* Space below title */
-  font-weight: 400; /* Normal font weight */
-}
-
-.cardValue {
-  font-size: 2rem; /* Large font for the value */
-  font-weight: 600; /* Boldest font weight for emphasis */
-  color: #333; /* Dark grey for value */
-}
-
-/* General Section Title Styling */
-.sectionTitle {
-  font-size: 1.8rem; /* Larger font for section titles */
-  font-weight: 300; /* Lighter font weight */
-  margin-bottom: 1.5rem; /* Space below title */
-  border-bottom: 1px solid #eee; /* Subtle separator */
-  padding-bottom: 0.5rem; /* Padding above the separator */
-}
-
-/* Chart Section Styling */
-.chartSection {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  min-height: 300px; /* Ensures enough space for a chart */
-  display: flex; /* Flexbox for internal layout */
-  flex-direction: column; /* Stacks items vertically */
-}
-
-.placeholderChart {
-  flex-grow: 1; /* Allows the placeholder to fill available space */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0; /* Slightly darker grey for placeholder */
-  border-radius: 4px;
-  color: #999; /* Light grey text */
-}
-
-/* Recent Activity Section Styling */
-.recentActivity {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-}
-
-.activityList {
-  list-style: none; /* Remove default list bullets */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
-}
-
-.activityItem {
-  padding: 0.8rem 0; /* Vertical padding for each item */
-  border-bottom: 1px solid #eee; /* Separator for list items */
-  display: flex;
-  justify-content: space-between; /* Pushes time to the right */
-  align-items: center;
-  font-size: 0.95rem; /* Slightly smaller font for activity details */
-}
-
-.activityItem:last-child {
-  border-bottom: none;
-}
-
-.activityTime {
-  color: #999; /* Lighter grey for timestamps */
-  font-size: 0.85rem; /* Even smaller font for time */
-}
-
-.goalItem {
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-.goalItem:last-child {
-  border-bottom: none;
-}
-
-.goalProgress {
-  color: #5cb85c; /* A nice green for progress */
-  font-weight: 500;
-}
-.goalDue {
-  color: #f0ad4e; /* Orange for due dates */
-  font-size: 0.85rem;
-}
-.goalsListCard {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  margin-bottom: 3rem; /* Space below the card */
-}
-
-.profileDetailCard {
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: center;
-    max-width: 600px;
-    margin: 2rem auto; /* Center the card horizontally */
-}
-.profileInfo {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-}
-.editProfileButton {
-    background-color: #007bff; /* A simple blue for primary action */
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    transition: background-color 0.2s ease-in-out;
-}
-.editProfileButton:hover {
-    background-color: #0056b3;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
