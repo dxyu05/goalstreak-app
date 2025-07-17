@@ -9,6 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.16",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.525.0",
+    "next": "^15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+=======
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+=======
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
@@ -27,10 +41,18 @@
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tabler/icons-react": "^3.34.0",
     "@tanstack/react-table": "^8.21.3",
+>>>>>>> c2921f75b0f39cc6cd13d26d5bad9c02269149fb
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
     "next": "15.3.1",
+<<<<<<< HEAD
+    "next-auth": "^4.24.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+>>>>>>> b00c952631275a6f19e5cedc43bbc12b10c896d3
+    "tailwind-merge": "^3.3.1"
+=======
     "next-themes": "^0.4.6",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -40,6 +62,7 @@
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zod": "^3.25.76"
+>>>>>>> c2921f75b0f39cc6cd13d26d5bad9c02269149fb
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -49,7 +72,15 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "tailwindcss": "^4.1.11",
+=======
     "tailwindcss": "^4",
+>>>>>>> b00c952631275a6f19e5cedc43bbc12b10c896d3
+=======
+    "tailwindcss": "^4",
+>>>>>>> c2921f75b0f39cc6cd13d26d5bad9c02269149fb
     "tw-animate-css": "^1.3.5",
     "typescript": "^5"
   }
