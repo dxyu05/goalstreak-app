@@ -120,7 +120,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 /* Hide Next.js development server indicator */
 #__nextjs-prerender-indicator {
   display: none !important;
