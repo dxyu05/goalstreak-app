@@ -1,10 +1,9 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "next": "^15.3.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "next-auth": "^4.24.11"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
@@ -15,11 +14,5 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
-=======
-    "next-auth": "^4.24.11"
->>>>>>> b00c952631275a6f19e5cedc43bbc12b10c896d3
-=======
-    "next-auth": "^4.24.11"
->>>>>>> c2921f75b0f39cc6cd13d26d5bad9c02269149fb
   }
 }
